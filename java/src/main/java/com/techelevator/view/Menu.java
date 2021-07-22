@@ -47,27 +47,7 @@ public class Menu {
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
 			out.println(optionNum + ") " + options[i]);
-/*
-			File newFile = new File("vendingmachine.csv");
-			Scanner inputScanner = null;
-			try {
-				inputScanner = new Scanner(newFile);
 
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-
-
-			List<String> productList = new ArrayList<>();
-
-			while (inputScanner.hasNextLine()) {
-				String lineInput = inputScanner.nextLine();
-				String [] wordsOnline = lineInput.split("\\|");
-				productList.add(inputScanner.nextLine());
-
-				for (String word : wordsOnline) {
-					System.out.println(word);
-				}*/
 		}
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
