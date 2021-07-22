@@ -4,6 +4,7 @@ import com.techelevator.view.Menu;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,29 +28,29 @@ public class VendingMachineCLI {
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 
-				File newFile = new File("vendingmachine.csv");
+				File newFile = new File("C:\\Users\\Student\\workspace\\mod1-capstone-green-t3\\java\\vendingmachine.csv");
 				Scanner inputScanner = null;
 				try {
 					inputScanner = new Scanner(newFile);
+					while (inputScanner.hasNextLine()) {
+						String lineInput = inputScanner.nextLine();
+						String[] wordsOnLine = lineInput.split(Pattern.quote("|"));
 
+						String slot1 = wordsOnLine [0];
+						String name1 = wordsOnLine [1];
+						String price1 = wordsOnLine [2];
+						String type1 = wordsOnLine [3];
+
+
+						System.out.println(lineInput);
+					}
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
 
 			//	List<String> productList = new ArrayList<>();
 
-				while (inputScanner.hasNextLine()) {
-					String lineInput = inputScanner.nextLine();
-					String[] wordsOnLine = lineInput.split(Pattern.quote("|"));
-				//	productList.add(inputScanner.nextLine());
-
-					String slot1 = wordsOnLine [0];
-				//	System.out.println(slot1);
-
-			//		for (String line : wordsOnLine) {
-
-						System.out.println(lineInput);
-					}	}
+			}
 					// display vending machine items
 			//	} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 					// do purchase
