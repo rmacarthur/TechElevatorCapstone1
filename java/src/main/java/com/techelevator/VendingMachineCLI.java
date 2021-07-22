@@ -36,22 +36,25 @@ public class VendingMachineCLI {
 					e.printStackTrace();
 				}
 
-
-				List<String> productList = new ArrayList<>();
+			//	List<String> productList = new ArrayList<>();
 
 				while (inputScanner.hasNextLine()) {
 					String lineInput = inputScanner.nextLine();
 					String[] wordsOnLine = lineInput.split(Pattern.quote("|"));
-					productList.add(inputScanner.nextLine());
+				//	productList.add(inputScanner.nextLine());
 
-					for (String line : wordsOnLine) {
+					String slot1 = wordsOnLine [0];
+				//	System.out.println(slot1);
+
+			//		for (String line : wordsOnLine) {
+
 						System.out.println(lineInput);
 					}	}
 					// display vending machine items
-				} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+			//	} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 					// do purchase
 				} }
-		}
+	//	}
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Menu menu = new Menu(System.in, System.out);
