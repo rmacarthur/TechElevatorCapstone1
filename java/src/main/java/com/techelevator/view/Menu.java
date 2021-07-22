@@ -1,8 +1,6 @@
 package com.techelevator.view;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 public class Menu {
@@ -46,8 +44,24 @@ public class Menu {
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
 			out.println(optionNum + ") " + options[i]);
+
+			File newFile = new File("vendingmachine.csv");
+			Scanner inputScanner = null;
+			try {
+				inputScanner = new Scanner(newFile);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+			while (inputScanner.hasNextLine()) {
+				String lineInput = inputScanner.nextLine();
+				String [] wordsOnline = lineInput.split("");
+
+				for (String word : wordsOnline) {
+					System.out.println(word + ">>>");
+				}
 		}
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
-}
+}}

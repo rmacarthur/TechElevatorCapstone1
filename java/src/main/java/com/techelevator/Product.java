@@ -1,16 +1,21 @@
 package com.techelevator;
 
-public class Product {
+import java.math.BigDecimal;
+
+public class Product implements Sellable, Soundable {
+
     private String slot;
     private String name;
-    private double price;
+    private BigDecimal price;
     private int quantity;
+    private String sound;
 
-    public Product (String slot, String name, double price, int quantity){
+    public Product (String slot, String name, BigDecimal price, int quantity){
         this.slot = slot;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.sound = sound;
 
 
     }
@@ -27,15 +32,20 @@ public class Product {
         return name;
     }
 
+    @Override
+    public String getSound() {
+        return sound;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
