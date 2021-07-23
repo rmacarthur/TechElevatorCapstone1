@@ -34,6 +34,7 @@ public class VendingMachineCLI {
 						String price1 = wordsOnLine[2];
 						String type1 = wordsOnLine[3];
 
+
 						if (wordsOnLine[3].equals("Chip")) {
 							list.add(new Chip);
 						} else if (wordsOnLine[3].equals("Drink")) {
