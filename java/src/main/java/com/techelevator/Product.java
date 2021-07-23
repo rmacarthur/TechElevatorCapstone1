@@ -11,7 +11,6 @@ public class Product implements Sellable, Soundable {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.sound = sound;
     }
     public String getSlot() {
         return slot;
@@ -43,6 +42,10 @@ public class Product implements Sellable, Soundable {
     }
     public void decreaseQuanity() {
         quantity--;
+    }
+
+    public void setSound(String sound) {
+        this.sound = sound;
     }
 //    public String soldOut() {
 //        if (quantity == 0) {
