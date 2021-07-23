@@ -12,7 +12,7 @@ public class VendingMachineCLI {
 	private static final String[] MAIN_MENU_OPTIONS = {MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE};
 
 	private Menu menu;
-
+	private List<Product> list = new ArrayList<>();
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
 	}
@@ -29,22 +29,20 @@ public class VendingMachineCLI {
 						String lineInput = inputScanner.nextLine();
 						String[] wordsOnLine = lineInput.split(Pattern.quote("|"));
 
-
-					/*	String slot1 = wordsOnLine[0];
+						String slot1 = wordsOnLine[0];
 						String name1 = wordsOnLine[1];
 						String price1 = wordsOnLine[2];
 						String type1 = wordsOnLine[3];
-*/					//	*************** WE ARE HERE TRYING TO FIGURE OUT THIS DUMB ARRAYLIST
-/*						List<List> trialList = new ArrayList();
-						for (String wordsAsString: wordsOnLine) {
-							String[] moreWordsOnLine = wordsAsString.split(",");
-							String slot = moreWordsOnLine[0].trim();
-							String name = moreWordsOnLine[1].trim();
-							String price = moreWordsOnLine[2].trim();
-							String type = moreWordsOnLine[3].trim();
-							List triallist1 = new ArrayList<>();
-							trialList.add(triallist1);
-						}*/
+
+						if (wordsOnLine[3].equals("Chip")) {
+							list.add(new Chip);
+						} else if (wordsOnLine[3].equals("Drink")) {
+							list.add(new Drink);
+						} else if (wordsOnLine[3].equals("Candy")) {
+							list.add(new Candy);
+						} else (wordsOnLine[3].equals("Gum")) {
+							list.add(new Gum);
+						}
 
 					}
 
