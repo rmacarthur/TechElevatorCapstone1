@@ -17,6 +17,7 @@ public class VendingMachineCLI {
 
 	private Menu menu;
 	private List<Product> list = new ArrayList<>();
+	private Scanner userInput = new Scanner(System.in);
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -45,13 +46,10 @@ public class VendingMachineCLI {
 				} else {
 					list.add(new Gum(slot1, name1, price1, 5));
 				}
-
 			}
-
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-
 
 		boolean shouldLoop = true;
 		while (shouldLoop) {
@@ -89,7 +87,8 @@ public class VendingMachineCLI {
 
 				switch (choice) {
 					case FEED_MONEY:
-						System.out.println("Please enter money in denominations of $1, $5, or $10");
+						addMoney();
+						//System.out.println("Please enter money in denominations of $1, $5, or $10");
 						// HERE WE COLLECT THE USERS MONEY
 						break;
 					case SELECT_PRODUCT:
@@ -97,7 +96,8 @@ public class VendingMachineCLI {
 						// HERE WE TAKE USER INPUT AND READ FROM LIST
 						break;
 					case FINISH_TRANSACTION:
-						System.out.println("Select to finish transaction and exit to main menu");
+						System.out.println("Select to receive change and exit to main menu");
+						// RETURN CHANGE TO USER AND EXIT TO MAIN MENU
 						purchaseLoop = false;
 
 				}
@@ -105,13 +105,17 @@ public class VendingMachineCLI {
 			} return null;
 		}
 
+	public void addMoney() {
+		BigDecimal balance = new BigDecimal("0.00");
+		System.out.print("Please enter money in denominations of $1, $5, or $10: ");
+		String response = userInput.nextLine();
+		balance = balance.add(new BigDecimal(response));
+		System.out.println(balance);
+	}
+
 	/*	public void paymentMenu (BigDecimal totalPrice){
 				System.out.println("Your total cost is: $" + totalPrice.setScale(2, RoundingMode.HALF_UP));
 			}*/
-
-	
-
-
 
 		public static void main (String[]args) throws FileNotFoundException {
 			Menu menu = new Menu(System.in, System.out);
