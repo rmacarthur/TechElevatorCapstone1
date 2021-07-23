@@ -1,21 +1,16 @@
 package com.techelevator.view;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
-
 public class Menu {
-
 	private PrintWriter out;
 	private Scanner in;
-
 	public Menu(InputStream input, OutputStream output) {
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
 	}
-
 	public Object getChoiceFromOptions(Object[] options) {
 		Object choice = null;
 		while (choice == null) {
@@ -24,7 +19,6 @@ public class Menu {
 		}
 		return choice;
 	}
-
 	private Object getChoiceFromUserInput(Object[] options) {
 		Object choice = null;
 		String userInput = in.nextLine();
@@ -41,33 +35,11 @@ public class Menu {
 		}
 		return choice;
 	}
-
 	private void displayMenuOptions(Object[] options) {
 		out.println();
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
 			out.println(optionNum + ") " + options[i]);
-/*
-			File newFile = new File("vendingmachine.csv");
-			Scanner inputScanner = null;
-			try {
-				inputScanner = new Scanner(newFile);
-
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-
-
-			List<String> productList = new ArrayList<>();
-
-			while (inputScanner.hasNextLine()) {
-				String lineInput = inputScanner.nextLine();
-				String [] wordsOnline = lineInput.split("\\|");
-				productList.add(inputScanner.nextLine());
-
-				for (String word : wordsOnline) {
-					System.out.println(word);
-				}*/
 		}
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
