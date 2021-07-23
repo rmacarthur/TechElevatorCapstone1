@@ -40,7 +40,7 @@ public class Product implements Sellable, Soundable {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public void decreaseQuanity() {
+    public void decreaseQuantity() {
         quantity--;
     }
 
