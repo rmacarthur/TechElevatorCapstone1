@@ -3,6 +3,7 @@ import com.techelevator.view.Menu;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +11,9 @@ import java.util.regex.Pattern;
 public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
-	private static final String[] MAIN_MENU_OPTIONS = {MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE};
+	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
+	private static final String[] MAIN_MENU_OPTIONS = {MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE,
+			MAIN_MENU_OPTION_EXIT};
 
 	private Menu menu;
 	private List<Product> list = new ArrayList<>();
@@ -20,6 +23,7 @@ public class VendingMachineCLI {
 	}
 
 	public void run() {
+		BigDecimal totalPrice = new BigDecimal(0.00);
 		File newFile = new File("C:\\Users\\Student\\workspace\\mod1-capstone-green-t3\\java\\vendingmachine.csv");
 		Scanner inputScanner = null;
 		try {
@@ -44,27 +48,70 @@ public class VendingMachineCLI {
 
 			}
 
-				/*	System.out.println(lineInput);
-					}*/
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-			while (true) {
-				String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
-				if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 
 
-					for (Product item : list) {
-//						System.out.println(item.getSlot()+ " " + item.getName());
-						//
-						System.out.printf("%5s  %-18s %10.2f %5d\n", item.getSlot(),
-								item.getName(), item.getPrice(), item.getQuantity());
-					}
+		boolean shouldLoop = true;
+		while (shouldLoop) {
+			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
+			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
+				for (Product item : list) {
+					System.out.printf("%5s  %-18s %10.2f %5d\n", item.getSlot(),
+							item.getName(), item.getPrice(), item.getQuantity());
+				}
 
-				} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
-				}    // do purchase
+			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+				purchaseMenu();
+
+			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
+				shouldLoop = false;
+			} else {
+				shouldLoop = false;
 			}
+
 		}
+	}
+		public BigDecimal purchaseMenu () {
+			final String FEED_MONEY = "Feed Money";
+			final String SELECT_PRODUCT = "Select Product";
+			final String FINISH_TRANSACTION = "" +
+					"Finish Transaction";
+
+			// Current Money Provided: $0.00
+			final String[] PURCHASE_MENU_OPTIONS = {FEED_MONEY, SELECT_PRODUCT, FINISH_TRANSACTION};
+
+			BigDecimal price = new BigDecimal("0.0");
+			boolean purchaseLoop = true;
+			while (purchaseLoop) {
+				String choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+
+				switch (choice) {
+					case FEED_MONEY:
+						System.out.println("Please enter money in denominations of $1, $5, or $10");
+						// HERE WE COLLECT THE USERS MONEY
+						break;
+					case SELECT_PRODUCT:
+						System.out.println("Please enter the alphanumeric code of the item you wish to purchase: ");
+						// HERE WE TAKE USER INPUT AND READ FROM LIST
+						break;
+					case FINISH_TRANSACTION:
+						System.out.println("Select to finish transaction and exit to main menu");
+						purchaseLoop = false;
+
+				}
+				// THIS WILL CHANGE TO SOMETHING DEPENDING ON HOW WE BUILD OUT THE PURCHASE SYSTEM
+			} return null;
+		}
+
+	/*	public void paymentMenu (BigDecimal totalPrice){
+				System.out.println("Your total cost is: $" + totalPrice.setScale(2, RoundingMode.HALF_UP));
+			}*/
+
+	
+
+
 
 		public static void main (String[]args) throws FileNotFoundException {
 			Menu menu = new Menu(System.in, System.out);
