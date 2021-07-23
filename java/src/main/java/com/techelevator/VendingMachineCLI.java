@@ -2,6 +2,7 @@ package com.techelevator;
 import com.techelevator.view.Menu;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -31,7 +32,7 @@ public class VendingMachineCLI {
 
 						String slot1 = wordsOnLine[0];
 						String name1 = wordsOnLine[1];
-						String price1 = wordsOnLine[2];
+						BigDecimal price1 = new BigDecimal(wordsOnLine[2]);
 						String type1 = wordsOnLine[3];
 
 
