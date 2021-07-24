@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import com.techelevator.view.UsersChange;
 public class VendingMachineCLI {
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -18,13 +19,16 @@ public class VendingMachineCLI {
 			MAIN_MENU_OPTION_EXIT};
 
 	private Menu menu;
+	private UsersChange change;
+	private Logger logger;
 	private List<Product> list = new ArrayList<>();
 	private Scanner userInput = new Scanner(System.in);
 	private BigDecimal balance = new BigDecimal("0.00");
-	private double[] coinChange = {0.05, 0.10, 0.25};
 
-	public VendingMachineCLI(Menu menu) {
+	public VendingMachineCLI(Menu menu, UsersChange change, Logger logger) {
 		this.menu = menu;
+		this.change = change;
+		this.logger = logger;
 	}
 
 	public void run() {
@@ -93,13 +97,22 @@ public class VendingMachineCLI {
 				switch (choice) {
 					case FEED_MONEY:
 						addMoney();
+
 						break;
 					case SELECT_PRODUCT:
 						selectItem();
 						break;
 					case FINISH_TRANSACTION:
 						System.out.println("Select to receive change and exit to main menu");
-						// RETURN CHANGE TO USER AND EXIT TO MAIN MENU
+						List<Integer> listOfChange = change.makeChange(balance);
+						List<String> denominations = change.retrieveCurrencyDenominations();
+						System.out.println("Change Returned: ");
+						for (int i = 0; i < listOfChange.size(); i++){
+							System.out.print(listOfChange.get(i));
+							System.out.print(denominations.get(i) + "\n");
+						}
+						balance =new BigDecimal(0.00);
+						listOfChange.clear();
 						purchaseLoop = false;
 
 				}
@@ -111,14 +124,18 @@ public class VendingMachineCLI {
 
 		System.out.print("Please enter money in denominations of $1, $5, or $10: ");
 		String response = userInput.nextLine();
+//		Double moneyInput = Double.parseDouble(response);
 		balance = balance.add(new BigDecimal(response));
 		System.out.println(balance);
+		logger.writeLine("Feed Money: / " + response + " / " + balance);
+
 	}
 
 	public void selectItem() {
 		for (Product item : list) {
 			System.out.printf("%5s  %-18s %10.2f %5d\n", item.getSlot(),
 					item.getName(), item.getPrice(), item.getQuantity());
+			logger.writeLine(item.getName());
 		}
 
 		System.out.print("Please enter the alphanumeric code of the item you wish to purchase: ");
@@ -156,7 +173,9 @@ public class VendingMachineCLI {
 
 		public static void main (String[]args) throws FileNotFoundException {
 			Menu menu = new Menu(System.in, System.out);
-			VendingMachineCLI cli = new VendingMachineCLI(menu);
+			UsersChange change = new UsersChange();
+			Logger logger = new Logger("Log.txt");
+			VendingMachineCLI cli = new VendingMachineCLI(menu, change, logger);
 			cli.run();
 		}
 	}

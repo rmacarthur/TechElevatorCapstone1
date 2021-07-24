@@ -47,10 +47,5 @@ public class Product implements Sellable, Soundable {
     public void setSound(String sound) {
         this.sound = sound;
     }
-//    public String soldOut() {
-//        if (quantity == 0) {
-//            return "sold out!!";
-//        }
-//        return null;
-//    }
+
 }
