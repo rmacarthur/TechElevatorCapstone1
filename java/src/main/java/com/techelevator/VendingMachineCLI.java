@@ -21,6 +21,7 @@ public class VendingMachineCLI {
 	private static final String[] MAIN_MENU_OPTIONS = {MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE,
 			MAIN_MENU_OPTION_EXIT};
 	private static Logger logger;
+
 	private Menu menu;
 	private UsersChange change;
 	//private Logger logger;
@@ -28,6 +29,7 @@ public class VendingMachineCLI {
 	private Scanner userInput = new Scanner(System.in);
 	private BigDecimal balance = new BigDecimal("0.00");
 	//
+
 	public VendingMachineCLI(Menu menu, UsersChange change, Logger logger) {
 		this.menu = menu;
 		this.change = change;
@@ -75,18 +77,23 @@ public class VendingMachineCLI {
 			}
 		}
 	}
+
 	public BigDecimal purchaseMenu() {
 		final String FEED_MONEY = "Feed Money";
 		final String SELECT_PRODUCT = "Select Product";
 		final String FINISH_TRANSACTION = "" +
 				"Finish Transaction";
+
 		//
 		final String[] PURCHASE_MENU_OPTIONS = {FEED_MONEY, SELECT_PRODUCT, FINISH_TRANSACTION};
+
+
 		BigDecimal price = new BigDecimal("0.0");
 		boolean purchaseLoop = true;
 		while (purchaseLoop) {
 			System.out.print("Current Balance: $" + balance.setScale(2, RoundingMode.HALF_UP));
 			String choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+
 			switch (choice) {
 				case FEED_MONEY:
 					addMoney();
@@ -106,25 +113,34 @@ public class VendingMachineCLI {
 					balance = new BigDecimal(0.00);
 					listOfChange.clear();
 					purchaseLoop = false;
+
 			}
+
 		}
 		return balance;
 	}
+
 	public void addMoney() {
+
 		System.out.print("Please enter money in denominations of $1, $5, or $10: ");
 		String response = userInput.nextLine();
-		if (response.contains("-")) {                          // NEED TO PREVENT NEGATIVE INPUT
+		if (response.contains("-")) {									// NEED TO PREVENT NEGATIVE INPUT
 			System.out.println("Please enter a positive number");
 		}
+
+
 		balance = balance.add(new BigDecimal(response));
 		System.out.println(balance);
-		// logger.write("Feed Money: / " + response + " / " + balance);
+	//	logger.write("Feed Money: / " + response + " / " + balance);
+
 	}
 	public void selectItem() {
+
 		for (Product item : list) {
 			System.out.printf("%5s  %-18s %10.2f %5d\n", item.getSlot(),
 					item.getName(), item.getPrice(), item.getQuantity());
-//       logger.write(item.getName() + item.getPrice() + balance);
+//			logger.write(item.getName() + item.getPrice() + balance);
+
 		}
 		System.out.print("Please enter the alphanumeric code of the item you wish to purchase: ");
 		String response = userInput.nextLine();
@@ -146,16 +162,19 @@ public class VendingMachineCLI {
 				System.out.print(slot.getPrice() + " ");
 				System.out.println(slot.getSound());
 				logger.write (logger.getTimeStamp() + "  " + slot.getName() + "  " + slot.getPrice() + " / " + balance);
+
 			}
 		}
 		if (!isFound)
 			System.out.println("Invalid code!");
 	}
+
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
 		UsersChange change = new UsersChange();
 		Logger logger = new Logger("C:\\Users\\Student\\workspace\\mod1-capstone-green-t3\\java\\Log.txt");
 		VendingMachineCLI cli = new VendingMachineCLI(menu, change, logger);
 		cli.run();
+
 	}
 }
