@@ -21,6 +21,7 @@ public class VendingMachineCLI {
 	private List<Product> list = new ArrayList<>();
 	private Scanner userInput = new Scanner(System.in);
 	private BigDecimal balance = new BigDecimal("0.00");
+	private double[] coinChange = {0.05, 0.10, 0.25};
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -99,7 +100,7 @@ public class VendingMachineCLI {
 					case FINISH_TRANSACTION:
 						System.out.println("Select to receive change and exit to main menu");
 						// RETURN CHANGE TO USER AND EXIT TO MAIN MENU
-					//	purchaseLoop = false;
+						purchaseLoop = false;
 
 				}
 				// THIS WILL CHANGE TO SOMETHING DEPENDING ON HOW WE BUILD OUT THE PURCHASE SYSTEM
@@ -137,7 +138,10 @@ public class VendingMachineCLI {
 				}
 				slot.decreaseQuantity();
 				balance = balance.subtract(slot.getPrice());
+				System.out.print(slot.getName() + " ");
+				System.out.print(slot.getPrice() + " ");
 				System.out.println(slot.getSound());
+
 			}
 		}
 		if (!isFound)
