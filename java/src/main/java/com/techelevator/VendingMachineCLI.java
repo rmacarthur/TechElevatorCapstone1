@@ -132,10 +132,11 @@ public class VendingMachineCLI {
 	}
 
 	public void selectItem() {
+		String response = userInput.nextLine();
 		for (Product item : list) {
 			System.out.printf("%5s  %-18s %10.2f %5d\n", item.getSlot(),
 					item.getName(), item.getPrice(), item.getQuantity());
-			logger.writeLine(item.getName());
+			logger.writeLine(item.getName(response.toString()) + balance) ;
 		}
 
 		System.out.print("Please enter the alphanumeric code of the item you wish to purchase: ");
