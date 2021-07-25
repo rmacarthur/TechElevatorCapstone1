@@ -131,7 +131,7 @@ public class VendingMachineCLI {
 
 		balance = balance.add(new BigDecimal(response));
 		System.out.println(balance);
-	//	logger.write("Feed Money: / " + response + " / " + balance);
+		logger.write("Feed Money: / " + response + " / " + balance);
 
 	}
 	public void selectItem() {
@@ -139,7 +139,7 @@ public class VendingMachineCLI {
 		for (Product item : list) {
 			System.out.printf("%5s  %-18s %10.2f %5d\n", item.getSlot(),
 					item.getName(), item.getPrice(), item.getQuantity());
-//			logger.write(item.getName() + item.getPrice() + balance);
+			logger.write(item.getName() + item.getPrice() + balance);
 
 		}
 		System.out.print("Please enter the alphanumeric code of the item you wish to purchase: ");
