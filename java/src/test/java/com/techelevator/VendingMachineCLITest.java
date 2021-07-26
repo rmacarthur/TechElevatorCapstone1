@@ -32,6 +32,7 @@ public class VendingMachineCLITest {
 
     }
 
+
     @Test
     public void loadsCorrectly() {
 
@@ -55,13 +56,4 @@ public class VendingMachineCLITest {
         Assert.assertEquals("0", String.valueOf(productTest2.getQuantity()));
     }
 
-//    @Test
-//    public void chipTest(){     //////// should we set up another "Before" for this? put them all in diff classes?
-//        //////// repeat this test for a Candy, a Drink, and a Gum
-//
-//        Chip chip = new Chip ("A2", "Stackers", new BigDecimal(1.45), 5);
-//
-//        Assert.assertEquals("Stackers", slot.getName());
-//        Assert.assertEquals("1.45", slot.getPrice().toString());
-//    }
 }
