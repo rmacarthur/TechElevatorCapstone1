@@ -1,0 +1,76 @@
+Feed Money: / 5 / 5.00
+Feed Money: / -10 / -10.00
+Feed Money: / -10 / -10.00
+Feed Money: / 1 / 1.00
+Feed Money: / 10 / 10.00
+Feed Money: / 55 / 65.00
+Feed Money: / 10 / 10.00
+Feed Money: / 1001 / 1011.00
+Feed Money: / 100000 / 101011.00
+Feed Money: / 1000000 / 1101011.00
+Feed Money: / 100 / 100.00
+Potato Crisps3.05100.00
+Stackers1.45100.00
+Grain Waves2.75100.00
+Cloud Popcorn3.65100.00
+Moonpie1.80100.00
+Cowtales1.50100.00
+Wonka Bar1.50100.00
+Crunchie1.75100.00
+Cola1.25100.00
+Dr. Salt1.50100.00
+Mountain Melter1.50100.00
+Heavy1.50100.00
+U-Chews0.85100.00
+Little League Chew0.95100.00
+Chiclets0.75100.00
+Triplemint0.75100.00
+Potato Crisps3.05100.00
+Stackers1.45100.00
+Grain Waves2.75100.00
+Cloud Popcorn3.65100.00
+Moonpie1.80100.00
+Cowtales1.50100.00
+Wonka Bar1.50100.00
+Crunchie1.75100.00
+Cola1.25100.00
+Dr. Salt1.50100.00
+Mountain Melter1.50100.00
+Heavy1.50100.00
+U-Chews0.85100.00
+Little League Chew0.95100.00
+Chiclets0.75100.00
+Triplemint0.75100.00
+Potato Crisps3.05100.00
+Stackers1.45100.00
+Grain Waves2.75100.00
+Cloud Popcorn3.65100.00
+Moonpie1.80100.00
+Cowtales1.50100.00
+Wonka Bar1.50100.00
+Crunchie1.75100.00
+Cola1.25100.00
+Dr. Salt1.50100.00
+Mountain Melter1.50100.00
+Heavy1.50100.00
+U-Chews0.85100.00
+Little League Chew0.95100.00
+Chiclets0.75100.00
+Triplemint0.75100.00
+Feed Money: / 5 / 5.00
+Potato Crisps3.055.00
+Stackers1.455.00
+Grain Waves2.755.00
+Cloud Popcorn3.655.00
+Moonpie1.805.00
+Cowtales1.505.00
+Wonka Bar1.505.00
+Crunchie1.755.00
+Cola1.255.00
+Dr. Salt1.505.00
+Mountain Melter1.505.00
+Heavy1.505.00
+U-Chews0.855.00
+Little League Chew0.955.00
+Chiclets0.755.00
+Triplemint0.755.00
