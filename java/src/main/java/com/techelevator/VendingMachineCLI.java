@@ -37,7 +37,7 @@ public class VendingMachineCLI {
 	}
 	public void run() {
 		BigDecimal totalPrice = new BigDecimal(0.00);
-		File newFile = new File("vendingmachine.csv");
+		File newFile = new File("C:\\Users\\Student\\workspace\\mod1-capstone-green-t3\\java\\vendingmachine.csv");
 		Scanner inputScanner = null;
 		try {
 			inputScanner = new Scanner(newFile);
@@ -122,19 +122,25 @@ public class VendingMachineCLI {
 
 	public void addMoney() {
 
-		System.out.print("Please enter money in denominations of $1, $5, or $10: ");
+		System.out.print("Please enter bills to make your purchase: ");
 		String response = userInput.nextLine();
-		if (response.contains("-")) {									// NEED TO PREVENT NEGATIVE INPUT
-			System.out.println("Please enter a positive number");
+		response = response.replaceAll("\\s+","");
+		try {
+			int i = Integer.parseInt(response);
+			if (i > 0 && i < 101) {
+				balance = balance.add(new BigDecimal(response));
+				System.out.println(balance);
+				logger.write("Feed Money: / " + response + " / " + balance);
+			} else {
+				System.out.println("Please enter a positive value of $100 of less!");
+			}
+
+		} catch (NumberFormatException e) {
+			System.out.println("Please enter a whole dollar value!");
+
 		}
-
-
-		balance = balance.add(new BigDecimal(response));
-		System.out.println(balance);
-		logger.write("Feed Money: / " + response + " / " + balance);
-
 	}
-	public void selectItem() {
+		public void selectItem() {
 
 		for (Product item : list) {
 			System.out.printf("%5s  %-18s %10.2f %5d\n", item.getSlot(),
